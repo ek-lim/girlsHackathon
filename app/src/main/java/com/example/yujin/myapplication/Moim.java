@@ -1,5 +1,6 @@
 package com.example.yujin.myapplication;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -19,7 +20,7 @@ public class Moim extends AppCompatActivity {
         setContentView(R.layout.activity_moim);
 
         tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-
+        tabLayout.setTabTextColors(Color.BLACK,Color.BLACK);
         tabLayout.addTab(tabLayout.newTab().setText("Information"));
         tabLayout.addTab(tabLayout.newTab().setText("jido"));
         tabLayout.addTab(tabLayout.newTab().setText("attender"));

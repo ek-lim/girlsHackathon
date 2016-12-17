@@ -3,6 +3,7 @@ package com.example.yujin.myapplication;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.util.Log;
 
 /**
  * Created by SSU on 2016-12-18.
@@ -26,36 +27,24 @@ public class MyViewPagerAdapter extends FragmentStatePagerAdapter {
 	/*
 	 * 여러 프레그먼트 중 어떤 프레그먼트를 보여줄지 결정
 	 */
-  /*  public Fragment getItem(int position) {
+    public Fragment getItem(int position) {
         switch (position){
             case 0:
-                if(pageNum==1) {
                     MoimInfo Moiminfo = new MoimInfo();
                     //isNext=false;
                     return Moiminfo;
-                }
-                else {
-                    FragmentA fragmentA = new FragmentA();
-                    return fragmentA;
-                }
             case 1:
-                FragmentB fragmentB=new FragmentB();
-                return fragmentB;
+                /* fragmentB=new FragmentB();
+                return fragmentB;*/ //지도 Fragment 추가하기~
             case 2:
-                if(pageNum > 0 && pageNum < 5) {
-                    FragmentC_1 fragmentC_1 = new FragmentC_1();
+                    MoimAttendance Moimattend = new MoimAttendance();
+                Log.d("","모임참석자");
                     //isNext=false;
-                    fragmentC_1.setType(pageNum);
-                    return fragmentC_1;
-                }
-                else {
-                    FragmentC fragmentC = new FragmentC();
-                    return fragmentC;
-                }
+                    return Moimattend;
             default:
                 return null;
         }
-    }*/
+    }
     /*
      * 보여질 프레그먼트가 몇개인지 결정
      */
@@ -67,9 +56,5 @@ public class MyViewPagerAdapter extends FragmentStatePagerAdapter {
         pageNum = num;
     }
 
-    @Override
-    public Fragment getItem(int position) {
-        return null;
-    }
 }
 
