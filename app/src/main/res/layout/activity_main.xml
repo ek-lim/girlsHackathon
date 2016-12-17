@@ -10,4 +10,66 @@
     tools:context="com.example.yujin.myapplication.MainActivity">
 
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="다들 어디야?"
+        android:id="@+id/textView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="52dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:hint="아이디"
+        android:ems="10"
+        android:id="@+id/input_id"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="54dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:hint="패스워드"
+        android:ems="10"
+        android:id="@+id/input_passwd"
+        android:layout_below="@+id/input_id"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="로그인"
+        android:id="@+id/bt_login"
+        android:layout_below="@+id/input_passwd"
+        android:layout_alignRight="@+id/input_passwd"
+        android:layout_alignEnd="@+id/input_passwd"
+        android:layout_alignLeft="@+id/input_passwd"
+        android:layout_alignStart="@+id/input_passwd" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="패스워드 찾기"
+        android:id="@+id/bt_findPW"
+        android:layout_below="@+id/bt_login"
+        android:layout_alignLeft="@+id/bt_login"
+        android:layout_alignStart="@+id/bt_login" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="회원가입"
+        android:id="@+id/bt_signup"
+        android:layout_below="@+id/bt_login"
+        android:layout_alignRight="@+id/bt_login"
+        android:layout_alignEnd="@+id/bt_login" />
+
 </RelativeLayout>

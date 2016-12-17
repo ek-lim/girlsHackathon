@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.yujin.myapplication.MainActivity">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="check중복확인"
+        android:id="@+id/Rbt_Check"
+        android:layout_gravity="right"
+        android:layout_above="@+id/R_passwd"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:hint="ID"
+        android:ems="10"
+        android:id="@+id/R_id"
+        android:layout_marginTop="27dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:hint="Password"
+        android:ems="10"
+        android:id="@+id/R_passwd"
+        android:layout_below="@+id/R_id"
+        android:layout_alignLeft="@+id/R_id"
+        android:layout_alignStart="@+id/R_id"
+        android:layout_alignRight="@+id/Rbt_Check"
+        android:layout_alignEnd="@+id/Rbt_Check" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:hint="Password Check"
+        android:ems="10"
+        android:id="@+id/R_passwd2"
+        android:layout_below="@+id/R_passwd"
+        android:layout_alignLeft="@+id/R_passwd"
+        android:layout_alignStart="@+id/R_passwd"
+        android:layout_alignRight="@+id/R_passwd"
+        android:layout_alignEnd="@+id/R_passwd" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="회원가입시 이용약관에 agree동의합니다."
+        android:id="@+id/textView2"
+        android:layout_alignBottom="@+id/editText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/editText"
+        android:layout_alignRight="@+id/R_id"
+        android:layout_alignEnd="@+id/R_id" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign up"
+        android:id="@+id/bt_signup"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/R_passwd"
+        android:layout_alignStart="@+id/R_passwd"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:layout_above="@+id/bt_signup"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:text="이용약관 보기" />
+
+</RelativeLayout>
