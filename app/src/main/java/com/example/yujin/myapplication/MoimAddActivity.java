@@ -2,6 +2,7 @@ package com.example.yujin.myapplication;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,7 +24,7 @@ public class MoimAddActivity extends AppCompatActivity {
     TextView dateLabel, timeLabel;
     Calendar date = Calendar.getInstance();
     Calendar time = Calendar.getInstance();
-    Button Datebtn, Timebtn;
+    Button Datebtn, Timebtn, MoimAddbtn;
 
     DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener(){
 
@@ -55,6 +56,19 @@ public class MoimAddActivity extends AppCompatActivity {
         dateLabel = (TextView)findViewById(R.id.date);
         timeLabel = (TextView)findViewById(R.id.time);
         Datebtn = (Button)findViewById(R.id.dateBtn);
+        MoimAddbtn = (Button)findViewById(R.id.MoimAddBtn);
+
+        MoimAddbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //PHP_REQUEST
+
+
+                Intent intent = new Intent(MoimAddActivity.this, MoimListviewActivity.class);
+                startActivity(intent);
+            }
+        });
 
         Datebtn.setOnClickListener(new View.OnClickListener(){
 
