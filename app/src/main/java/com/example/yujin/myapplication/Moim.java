@@ -11,19 +11,22 @@ import android.support.v7.app.AppCompatActivity;
  */
 public class Moim extends AppCompatActivity {
 
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
-    MyViewPagerAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_moim);
 
-        tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+        MoimAdapter adapter = new MoimAdapter(getSupportFragmentManager());
+
+        adapter.addFragment(new MoimInfo(), "Information"); // fragment만 바꾸면 돼요
+        adapter.addFragment(new MoimMaps(), "Maps");
+        adapter.addFragment(new MoimAttendance(), "Attender");
+        viewPager.setAdapter(adapter);
+
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.setTabTextColors(Color.BLACK,Color.BLACK);
-        tabLayout.addTab(tabLayout.newTab().setText("Information"));
-        tabLayout.addTab(tabLayout.newTab().setText("jido"));
-        tabLayout.addTab(tabLayout.newTab().setText("attender"));
+        tabLayout.setupWithViewPager(viewPager);
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
     }
 }

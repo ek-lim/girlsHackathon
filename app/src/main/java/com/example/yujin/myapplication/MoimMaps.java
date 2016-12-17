@@ -11,11 +11,11 @@ import android.widget.Toast;
 /**
  * Created by SSU on 2016-12-18.
  */
-public class MoimInfo extends Fragment {
+public class MoimMaps extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        int resId = R.layout.activity_moim_info;
-        Toast.makeText(this.getContext(), "1", Toast.LENGTH_SHORT).show();
+        int resId = R.layout.activity_moim_attendance;
+        Toast.makeText(this.getContext(), "2", Toast.LENGTH_SHORT).show();
         return inflater.inflate(resId, null);
     }
 

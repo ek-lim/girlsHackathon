@@ -4,14 +4,9 @@
     android:layout_height="match_parent"
     android:weightSum="1">
 
-    <TextView
-        android:id="@+id/favorites_name"
-        android:layout_width="78dp"
-        android:layout_height="64dp"
-        android:layout_alignBottom="@+id/favorites_image"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
-        android:textSize="20sp"
-        android:text="토스카나 호텔 "
-        android:textColor="@color/abc_background_cache_hint_selector_material_dark" />
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/AttendList"
+        android:layout_weight="1" />
 </LinearLayout>
