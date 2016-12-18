@@ -1,34 +1,26 @@
 package com.example.yujin.myapplication;
 
 import android.app.Notification;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.app.NotificationCompat;
-import android.support.v7.widget.Toolbar;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
-import java.util.List;
 
 public class MoimListviewActivity extends AppCompatActivity {
 
@@ -36,7 +28,7 @@ public class MoimListviewActivity extends AppCompatActivity {
     MoimCustomListviewAdapter adapter;
     String Title,Date,Time,location,secret,pwd;
     Drawable secret_d;
-//    private ArrayList<MoimItemData> MoimItemDatas = null;
+    private ArrayList<MoimItemData> MoimItemDatas = null;
 //    private MoimCustomListviewAdapter adapter;
 
     @Override
@@ -95,6 +87,7 @@ public class MoimListviewActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
+                        //Intent intent = new Intent(MoimListviewActivity.this, Moim.class);
 
                         Intent intent = new Intent(MoimListviewActivity.this, MoimContent.class);
                         intent.putExtra("Title", itemData_temp.getTitle());
@@ -103,14 +96,26 @@ public class MoimListviewActivity extends AppCompatActivity {
                         intent.putExtra("local", itemData_temp.getLocation());
                         startActivityForResult(intent, 0);
 
+//                        MoimInfo fragment = new MoimInfo();
+//                        Bundle bundle = new Bundle();
+//                        bundle.putString("Title",itemData_temp.getTitle());
+//                        bundle.putString("Date", itemData_temp.getDate());
+//                        bundle.putString("Time", itemData_temp.getTime());
+//                        bundle.putString("local", itemData_temp.getLocation());
+//                        fragment.setArguments(bundle);
+
                     }
                 }).show();
             }if(itemData_temp.getSecret().toString().equals("true")){
                 AlertDialog.Builder alert = new AlertDialog.Builder(MoimListviewActivity.this);
                 alert.setTitle("비밀방").setMessage("비밀번호를 입력해주세요.");
 
-                final EditText input = new EditText(MoimListviewActivity.this);
+                //final EditText input = new EditText(MoimListviewActivity.this);
+                final EditText input = new EditText(getBaseContext());
                 alert.setView(input);
+               // EditText content = new EditText(getBaseContext());
+                PasswordTransformationMethod passwdtm = new PasswordTransformationMethod();
+                input.setTransformationMethod(passwdtm);
 
                 alert.setPositiveButton("입력",new DialogInterface.OnClickListener(){
 
@@ -118,7 +123,7 @@ public class MoimListviewActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         String secret = input.getText().toString();
                         Log.e("secret pwd",secret);
-                            if(itemData_temp.getPwd().toString().equals(secret)){
+                        if(itemData_temp.getPwd().toString().equals(secret)){
                                 Intent intent = new Intent(MoimListviewActivity.this, MoimContent.class);
                                 intent.putExtra("Title", itemData_temp.getTitle());
                                 intent.putExtra("Date", itemData_temp.getDate());
@@ -126,9 +131,17 @@ public class MoimListviewActivity extends AppCompatActivity {
                                 intent.putExtra("local", itemData_temp.getLocation());
                                 startActivityForResult(intent, 0);
 
-                            }else {
-                                Toast.makeText(MoimListviewActivity.this, "비밀번호가 틀렸습니다. 다시 입력해주세요.", Toast.LENGTH_SHORT).show();
-                            }
+//                            MoimInfo fragment = new MoimInfo();
+//                            Bundle bundle = new Bundle();
+//                            bundle.putString("Title",itemData_temp.getTitle());
+//                            bundle.putString("Date", itemData_temp.getDate());
+//                            bundle.putString("Time", itemData_temp.getTime());
+//                            bundle.putString("local", itemData_temp.getLocation());
+//                            fragment.setArguments(bundle);
+
+                        }else {
+                            Toast.makeText(MoimListviewActivity.this, "비밀번호가 틀렸습니다. 다시 입력해주세요.", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
 
@@ -141,8 +154,8 @@ public class MoimListviewActivity extends AppCompatActivity {
                 });
                 alert.show();
             }
-            }
-        };
+        }
+    };
 
 
     protected void  onActivityResult(int requestCode, int resultCode, Intent data){
@@ -223,8 +236,5 @@ public class MoimListviewActivity extends AppCompatActivity {
 
 
 }
-
-
-
 
 

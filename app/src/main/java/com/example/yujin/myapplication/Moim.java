@@ -1,32 +1,59 @@
 package com.example.yujin.myapplication;
 
-import android.graphics.Color;
+
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.ToggleButton;
 
 /**
  * Created by SSU on 2016-12-17.
  */
 public class Moim extends AppCompatActivity {
 
+    ToggleButton Attendbtn;
+    String Title, Date, Time, location;
+    TextView Date_t, Time_t, location_t;
+    Button myLocationBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_moim);
 
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-        MoimAdapter adapter = new MoimAdapter(getSupportFragmentManager());
+       // GridLayout gridlayout = (GridLayout) findViewById(R.id.grid);
+        Button info, map, attend;
+        info = (Button) findViewById(R.id.bt_info);
+        info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),"asdfafj",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), MoimContent.class);
+                startActivity(intent);
+            }
+        });
 
-        adapter.addFragment(new MoimInfo(), "Information"); // fragment만 바꾸면 돼요
-        adapter.addFragment(new MoimMaps(), "Maps");
-        adapter.addFragment(new MoimAttendance(), "Attender");
-        viewPager.setAdapter(adapter);
-
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        tabLayout.setTabTextColors(Color.BLACK,Color.BLACK);
-        tabLayout.setupWithViewPager(viewPager);
-        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        map = (Button) findViewById(R.id.bt_map);
+        map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),"a23132j",Toast.LENGTH_SHORT).show();
+                /* Intent intent = new Intent(getApplicationContext(), PublicMap.class);
+                startActivity(intent);*/
+            }
+        });
+        attend = (Button) findViewById(R.id.bt_attend);
+        attend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),"a322262646437547373sdfj",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), MoimAttendance.class);
+                startActivity(intent);
+            }
+        });
     }
 }

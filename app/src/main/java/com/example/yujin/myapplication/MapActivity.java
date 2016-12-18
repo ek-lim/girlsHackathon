@@ -173,8 +173,6 @@ public class MapActivity extends Activity implements GoogleApiClient.ConnectionC
                 googleMap.moveCamera(CameraUpdateFactory.newLatLng(SEOUL));
                 googleMap.animateCamera(CameraUpdateFactory.zoomTo(15));
 
-
-
             }
         });
 

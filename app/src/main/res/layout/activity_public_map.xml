@@ -4,9 +4,28 @@
     android:id="@+id/activity_public_map"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context="com.example.yujin.myapplication.PublicMap">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/bt_info"
+            android:text="Information"/>
+        <Button
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/bt_map"
+            android:text="Map"/>
+        <Button
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/bt_attend"
+            android:text="Attendance"/>
 
+    </LinearLayout>
     <fragment
         android:name="com.google.android.gms.maps.MapFragment"
         android:id="@+id/mapPu"
@@ -15,8 +34,12 @@
         />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="도착"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="시작"
+
+        android:background="@drawable/btn_bg_n"
         android:id="@+id/btnArrived"/>
+
+
 </RelativeLayout>

@@ -61,12 +61,13 @@ public class PublicMap extends Activity implements GoogleApiClient.ConnectionCal
     String lol;
     String sendAddress="";
     Button btnArrived;
-
+    LatLng latLng;
     String strAddress;
     List<Address> listAddress;
     Geocoder geocoder;
     android.location.Address AddrAddress;
     Barcode.GeoPoint location;
+    Button attend;
 
     protected synchronized void buildGoogleApiClient() {
         mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -125,8 +126,23 @@ public class PublicMap extends Activity implements GoogleApiClient.ConnectionCal
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_public_map);
-        PublicMap = PublicMap.this;
 
+        attend = (Button) findViewById(R.id.bt_attend);
+        attend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //  Toast.makeText(getApplicationContext(),"a322262646437547373sdfj",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), MoimAttendance.class);
+                startActivity(intent);
+            }
+        });
+
+
+
+        PublicMap = PublicMap.this;
+        latLng = new LatLng(37.595632
+                , 126.940658
+        );
         Log.d("onCreate", "onCreate");
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
@@ -140,6 +156,7 @@ public class PublicMap extends Activity implements GoogleApiClient.ConnectionCal
             public void onClick(View v) {
 
                 android.support.v7.app.AlertDialog.Builder logout = new android.support.v7.app.AlertDialog.Builder(PublicMap.this);
+                logout.setMessage("모임을 확인하세요");
                 logout.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int position) {
@@ -147,28 +164,10 @@ public class PublicMap extends Activity implements GoogleApiClient.ConnectionCal
                         aa.start();
                     }
                 });
-                logout.setNegativeButton("취소", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                    }
-                });
-                logout.setNeutralButton("위치 재확인", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-
-                    }
-                });
-                logout.setMessage("홍길동 님이 "+ name+"에 도착하였습니다.");
                 logout.show();
-
             }
         });
-
     }
-
-
 
     @Override
     public void onMapReady(final GoogleMap Map) {
@@ -504,13 +503,12 @@ public class PublicMap extends Activity implements GoogleApiClient.ConnectionCal
             switch (msg.what){
 
                 case 1:
-                    LatLng latLng = new LatLng(purLatitude, purLogitude);
+
+
                     MarkerOptions markerOptions = new MarkerOptions();
                     markerOptions.position(latLng);
                     markerOptions.title("모임위치 : "+ name);
                     markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.detail_ic_map_place));
-
-
 
                     googleMap.addMarker(markerOptions);
 
@@ -523,17 +521,134 @@ public class PublicMap extends Activity implements GoogleApiClient.ConnectionCal
                     break;
 
                 case 2:
+                    Log.i("스레드", "받아1");
+                    Toast.makeText(getApplicationContext(), "모임이 1시간 남았습니다.", Toast.LENGTH_SHORT).show();
+                    markerOptions = new MarkerOptions();
+                    markerOptions.position(latLng);
+                    markerOptions.title("모임위치 : "+ name);
+                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.detail_ic_map_place));
 
-                    LatLng aa = new LatLng(purLatitude, purLogitude);
+                    googleMap.addMarker(markerOptions);
+
+                    LatLng aa = new LatLng(curLatitude, curLongitude);
                     MarkerOptions aaOption = new MarkerOptions();
                     aaOption.position(aa);
-                    aaOption.title("모임위치 : "+ name);
-                    aaOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.detail_ic_map_member1));
+                    aaOption.title("유저 1 : ");
+                    aaOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.detail_ic_map_me));
                     googleMap.addMarker(aaOption);
-
+                    LatLng bb = new LatLng(37.531662
+                            , 126.896937
+                    );
+                    MarkerOptions bbOption = new MarkerOptions();
+                    bbOption.position(bb);
+                    bbOption.title("유저 2 ");
+                    bbOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.detail_ic_map_member1));
+                    googleMap.addMarker(bbOption);
+                    LatLng cc = new LatLng(37.579828
+                            , 126.984982
+                    );
+                    MarkerOptions ccOption = new MarkerOptions();
+                    ccOption.position(cc);
+                    ccOption.title("유저 3 ");
+                    ccOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.detail_ic_map_member2));
+                    googleMap.addMarker(ccOption);
 
 
                     break;
+
+                case 3:
+                    googleMap.clear();
+                    Toast.makeText(getApplicationContext(), "모임이 30분 남았습니다.", Toast.LENGTH_SHORT).show();
+
+                    markerOptions = new MarkerOptions();
+                    markerOptions.position(latLng);
+                    markerOptions.title("모임위치 : "+ name);
+                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.detail_ic_map_place));
+
+                    googleMap.addMarker(markerOptions);
+
+                    Log.i("스레드", "받아2");
+                    LatLng aaa = new LatLng(curLatitude, curLongitude);
+                    MarkerOptions aaaOption = new MarkerOptions();
+                    aaaOption.position(aaa);
+                    aaaOption.title("유저 1 : ");
+                    aaaOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.detail_ic_map_me));
+                    googleMap.addMarker(aaaOption);
+                    LatLng bbb = new LatLng(37.558537
+                            , 126.925346
+                    );
+
+                    MarkerOptions bbbOption = new MarkerOptions();
+                    bbbOption.position(bbb);
+                    bbbOption.title("유저 2 : ");
+                    bbbOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.detail_ic_map_member1));
+                    googleMap.addMarker(bbbOption);
+                    LatLng ccc = new LatLng(37.579828
+                            , 126.984982
+                    );
+
+                    MarkerOptions cccOption = new MarkerOptions();
+                    cccOption.position(ccc);
+                    cccOption.title("유저 3 : ");
+                    cccOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.detail_ic_map_member2));
+                    googleMap.addMarker(cccOption);
+
+
+                    break;
+
+
+                case 4:
+
+                    googleMap.clear();
+                    Toast.makeText(getApplicationContext(), "모임이 10분 남았습니다.", Toast.LENGTH_SHORT).show();
+
+                    markerOptions = new MarkerOptions();
+                    markerOptions.position(latLng);
+                    markerOptions.title("모임위치 : "+ name);
+                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.detail_ic_map_place));
+
+                    googleMap.addMarker(markerOptions);
+
+
+                    Log.i("스레드", "받아2");
+                    LatLng aaaa = new LatLng(curLatitude, curLongitude);
+                    MarkerOptions aaaaOption = new MarkerOptions();
+                    aaaaOption.position(aaaa);
+                    aaaaOption.title("유저 1 : ");
+                    aaaaOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.detail_ic_map_me));
+                    googleMap.addMarker(aaaaOption);
+                    LatLng bbbb = new LatLng(37.588058
+                            , 126.93617
+                    );
+
+                    MarkerOptions bbbbOption = new MarkerOptions();
+                    bbbbOption.position(bbbb);
+                    bbbbOption.title("유저 2 : ");
+                    bbbbOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.detail_ic_map_member1));
+                    googleMap.addMarker(bbbbOption);
+
+                    LatLng cccc = new LatLng(37.590724
+                            , 126.939354
+
+                    );
+                    MarkerOptions ccccOption = new MarkerOptions();
+                    ccccOption.position(cccc);
+                    ccccOption.title("유저 3 : ");
+                    ccccOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.detail_ic_map_member2));
+                    googleMap.addMarker(ccccOption);
+                    break;
+
+                case 5 :
+                    Toast.makeText(getApplicationContext(),"유저 3이 1등으로 도착 하였습니다", Toast.LENGTH_SHORT).show();
+                    break;
+
+                case 6:
+
+                    Toast.makeText(getApplicationContext(),"유저 2가 10분 늦게 도착 하였습니다", Toast.LENGTH_SHORT).show();
+
+
+                    break;
+
             }
         }
     };
@@ -541,12 +656,40 @@ public class PublicMap extends Activity implements GoogleApiClient.ConnectionCal
 
 
     class movingMarker extends Thread implements Runnable{
-        Boolean flag = true;
        public void run(){
            try{
                Message msg = new Message();
                msg.what=2;
                handler.sendMessage(msg);
+
+               Log.i("스레드", String.valueOf(1));
+               Thread.sleep(5000);
+
+               Message msg1 = new Message();
+               msg1.what=3;
+               handler.sendMessage(msg1);
+               Log.i("스레드", String.valueOf(2));
+
+               Thread.sleep(3000);
+
+               Message msg2 = new Message();
+               msg2.what=4;
+               handler.sendMessage(msg2);
+               Log.i("스레드", String.valueOf(3));
+
+               Thread.sleep(3000);
+
+               Message msg3 = new Message();
+               msg3.what=5;
+               handler.sendMessage(msg3);
+               Log.i("스레드", String.valueOf(3));
+
+               Thread.sleep(3000);
+
+               Message msg6 = new Message();
+               msg6.what=6;
+               handler.sendMessage(msg6);
+               Log.i("스레드", String.valueOf(3));
 
            }catch (Exception e){
                e.printStackTrace();

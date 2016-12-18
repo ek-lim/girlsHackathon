@@ -3,7 +3,10 @@ package com.example.yujin.myapplication;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -19,7 +22,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class MoimAddActivity extends AppCompatActivity {
-
+    String lol;
     SimpleDateFormat fmDate = new SimpleDateFormat("yyyy. M. d");
     SimpleDateFormat fmTime = new SimpleDateFormat("hh:mm a");
     //DateFormat fmDate = DateFormat.getDateInstance();
@@ -31,8 +34,7 @@ public class MoimAddActivity extends AppCompatActivity {
     ImageButton Datebtn, Timebtn;
     CheckBox secret;
     String secret_s,pwd;
-    EditText pwd_e;
-
+    EditText pwd_e, location_add;
 
     DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener(){
 
@@ -69,6 +71,16 @@ public class MoimAddActivity extends AppCompatActivity {
         timeLabel = (TextView)findViewById(R.id.time_add);
         Datebtn = (ImageButton)findViewById(R.id.dateBtn);
         secret = (CheckBox)findViewById(R.id.secret);
+
+        location_add = (EditText)findViewById(R.id.location_add);
+        location_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SettongLocation.class);
+                startActivity(intent);
+            }
+        });
+
         MoimAddbtn_ = (Button)findViewById(R.id.MoimAddBtn_);
         MoimAddbtn_.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,7 +131,6 @@ public class MoimAddActivity extends AppCompatActivity {
         });
 
         Timebtn = (ImageButton)findViewById(R.id.timeBtn);
-
         Timebtn.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -144,4 +155,49 @@ public class MoimAddActivity extends AppCompatActivity {
         dateLabel.setText(fmDate.format(date.getTime()));
         timeLabel.setText(fmTime.format(time.getTime()));
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        SharedPreferences test = getSharedPreferences("주소", MODE_PRIVATE);
+        lol = test.getString("주소", "empty");
+
+        if(lol.equals("empty")){
+            Logger.Log.i("가져온정보", "없음");
+        }else{
+            Message msg1 = handler.obtainMessage();
+            msg1.what=1;
+            handler.sendMessage(msg1);
+        }
+    }
+
+    Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+
+            switch (msg.what){
+                case 1:
+                    String aaa [] = lol.split("//");
+                    lol=aaa[2];
+                    location_add = (EditText) findViewById(R.id.location_add);
+                    location_add.setText(lol);
+                    break;
+            }
+        }
+    };
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        SharedPreferences pref = getSharedPreferences("주소", MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.remove("주소");
+        editor.commit();
+
+
+    }
+
 }

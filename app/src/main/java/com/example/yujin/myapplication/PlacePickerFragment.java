@@ -122,7 +122,6 @@ public class PlacePickerFragment extends Fragment implements OnCardClickListener
                         Toast.LENGTH_LONG)
                         .show();
             }
-
             // END_INCLUDE(intent)
         }
     }
@@ -184,8 +183,6 @@ public class PlacePickerFragment extends Fragment implements OnCardClickListener
                 String lol = aa+"//"+address+ "//"+name.toString();
                 Log.d("가져온 주소", lol);
                 // Show the card.
-
-
 
                 SharedPreferences pref = getActivity().getSharedPreferences("주소", Context.MODE_PRIVATE);
                 SharedPreferences.Editor edt = pref.edit();

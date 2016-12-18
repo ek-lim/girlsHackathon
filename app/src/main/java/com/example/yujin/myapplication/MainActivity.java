@@ -29,8 +29,8 @@ public class MainActivity extends AppCompatActivity {
         bt_login = (Button) findViewById(R.id.bt_login);
         bt_login.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //Intent intent = new Intent(getApplicationContext(), MoimListviewActivity.class);
-                Intent intent = new Intent(getApplicationContext(), Moim.class);
+                Intent intent = new Intent(getApplicationContext(), MoimListviewActivity.class);
+                //Intent intent = new Intent(getApplicationContext(), Moim.class);
                 startActivity(intent);
             }
         });
@@ -46,43 +46,43 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        Button btn = (Button) findViewById(R.id.button2);
-        btn.setOnClickListener(new View.OnClickListener() {
-                                   @Override
-                                   public void onClick(View v) {
-                                       Intent intent = new Intent(MainActivity.this, MoimListviewActivity.class);
-                                       startActivity(intent);
-                                   }
-                               }
-        );
+//        Button btn = (Button) findViewById(R.id.button2);
+//        btn.setOnClickListener(new View.OnClickListener() {
+//                                   @Override
+//                                   public void onClick(View v) {
+//                                       Intent intent = new Intent(MainActivity.this, MoimListviewActivity.class);
+//                                       startActivity(intent);
+//                                   }
+//                               }
+//        );
 
 
-        btnMap = (Button) findViewById(R.id.btnMap);
-        btnMap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MapActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        btnSearch = (Button) findViewById(R.id.btnSearch);
-        btnSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), SettongLocation.class);
-                startActivity(intent);
-            }
-        });
-
-        btnPublicMap = (Button) findViewById(R.id.btnPublicMap);
-        btnPublicMap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), PublicMap.class);
-                startActivity(intent);
-            }
-        });
+//        btnMap = (Button) findViewById(R.id.btnMap);
+//        btnMap.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getApplicationContext(), MapActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        btnSearch = (Button) findViewById(R.id.btnSearch);
+//        btnSearch.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getApplicationContext(), SettongLocation.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        btnPublicMap = (Button) findViewById(R.id.btnPublicMap);
+//        btnPublicMap.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getApplicationContext(), PublicMap.class);
+//                startActivity(intent);
+//            }
+//        });
 
     }
     @Override
@@ -112,10 +112,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
 
+/*
         SharedPreferences pref = getSharedPreferences("주소", MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
         editor.remove("주소");
         editor.commit();
+*/
 
 
     }
@@ -128,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
 
             switch (msg.what){
                 case 1:
-                    tvLocation = (TextView)findViewById(R.id.tvLocation);
+                    //tvLocation = (TextView)findViewById(R.id.tvLocation);
                     tvLocation.setText(lol);
                     break;
             }
