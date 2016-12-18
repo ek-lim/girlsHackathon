@@ -8,11 +8,13 @@ import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.EditText;
+import android.widget.TextView;
+
+import Logger.Log;
 
 public class MainActivity extends AppCompatActivity {
-    Button btnMap, btnSearch, btnPublicMap, btn;
+    Button btnMap, btnSearch, btnPublicMap;
     TextView tvLocation;
     String lol="";
     EditText input_id, input_passwd;
@@ -25,8 +27,8 @@ public class MainActivity extends AppCompatActivity {
         input_id = (EditText) findViewById(R.id.input_id);
         input_passwd = (EditText) findViewById(R.id.input_passwd);
         bt_login = (Button) findViewById(R.id.bt_login);
-        bt_login.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
+        bt_login.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 //Intent intent = new Intent(getApplicationContext(), MoimListviewActivity.class);
                 Intent intent = new Intent(getApplicationContext(), Moim.class);
                 startActivity(intent);
@@ -37,25 +39,25 @@ public class MainActivity extends AppCompatActivity {
 
         bt_signup = (Button) findViewById(R.id.bt_signup);
         bt_signup.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v){
+            public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), RegistActivity.class);
                 startActivity(intent);
             }
         });
-    }
 
-        Button btn = (Button)findViewById(R.id.button2);
+
+        Button btn = (Button) findViewById(R.id.button2);
         btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, MoimListviewActivity.class);
-                startActivity(intent);
-            }
-        });
+                                   @Override
+                                   public void onClick(View v) {
+                                       Intent intent = new Intent(MainActivity.this, MoimListviewActivity.class);
+                                       startActivity(intent);
+                                   }
+                               }
+        );
 
 
-
-        btnMap=(Button)findViewById(R.id.btnMap);
+        btnMap = (Button) findViewById(R.id.btnMap);
         btnMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnSearch = (Button)findViewById(R.id.btnSearch);
+        btnSearch = (Button) findViewById(R.id.btnSearch);
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnPublicMap = (Button)findViewById(R.id.btnPublicMap);
+        btnPublicMap = (Button) findViewById(R.id.btnPublicMap);
         btnPublicMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
     @Override
     protected void onPause() {
         super.onPause();
