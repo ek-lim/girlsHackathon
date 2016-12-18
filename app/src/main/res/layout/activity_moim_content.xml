@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.yujin.myapplication.MoimContent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="8dp"
+        android:paddingTop="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="일시"
+            android:textSize="15sp"
+            android:padding="5dp"/>
+
+        <TextView
+            android:id="@+id/content_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_marginLeft="135dp"
+            android:gravity="right"
+            android:layout_gravity="right"
+            android:text="2017.12.22"
+            android:textColor="#383838"
+            />
+
+
+
+        <TextView
+            android:id="@+id/content_time"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:paddingLeft="12dp"
+            android:text="PM 07:30"
+            android:textColor="#383838"
+            />
+
+
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:background="#4682B4"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="장소"
+            android:textSize="15sp"
+            android:padding="5dp"/>
+
+        <TextView
+            android:id="@+id/content_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:gravity="right"
+            android:textColor="#383838"
+            android:text="강남역 6번출구"/>
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:background="#4682B4"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="참석자"
+        android:padding="5dp"
+        android:layout_marginTop="15dp"
+        android:textSize="15sp"
+        />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/member"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="270dp"
+        android:orientation="horizontal"
+        android:gravity="bottom">
+
+        <ToggleButton
+            android:id="@+id/attendBtn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:textOff=" "
+            android:textOn=" "
+            android:background="@drawable/btn_attend_bg"
+            android:layout_marginRight="5dp"/>
+
+        <Button
+            android:id="@+id/myLocationBtn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="0.5"
+            android:background="@drawable/btn2_n"
+            android:layout_marginLeft="5dp"/>
+
+
+    </LinearLayout>
+</LinearLayout>
